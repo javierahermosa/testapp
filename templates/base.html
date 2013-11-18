@@ -1,97 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+	<head>
+    	<title>Qbite Begins{% block title %}{% endblock %}</title>
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	<meta name="description" content="">
+    	<meta name="keywords" content="">
+    	<meta name="author" content="Javiera Guedes">
+    	<meta charset="utf-8">
 
-    <title>Qbite Begins{% block title %}{% endblock %}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="Javiera Guedes">
-    <meta charset="utf-8">
-<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}" />
-    <link rel="shortcut icon" href="{{ url_for('static', filename='ico/qbite.ico') }}">
-	<style type="text/css">
-      body {
-        padding-top: 20px;
-        padding-bottom: 40px;
-      }
+		<link type="text/css" rel="stylesheet" 
+		      href="{{ url_for('static', filename='css/bootstrap.css') }}" />
+        <link rel="shortcut icon" 
+              href="{{ url_for('static', filename='ico/qbite.ico') }}">
+	    <link rel="stylesheet" 
+	          href="{{ url_for('static', filename='css/bootstrap-responsive.css') }}" >
+	    <link rel="stylesheet" 
+		      href="{{ url_for('static', filename='css/my.css') }}" >
+	</head>
 
-      /* Custom container */
-      .container-narrow {
-        margin: 0 auto;
-        max-width: 700px;
-      }
-      .container-narrow > hr {
-        margin: 30px 0;
-      }
+  	<body>
+  		<div class="container-narrow">
+			
+			<div class="masthead">
+        		<ul class="nav nav-pills pull-right">
+         			<li class="active"><a href="#">Home</a></li>
+                	<li><a href="#">Sign In</a></li>
+        		</ul>
+        		<h3 class="muted">Qbite</h3>
+      		</div> <!-- class masthead -->
 
-      /* Main marketing message and sign up button */
-      .jumbotron {
-        margin: 60px 0;
-        text-align: center;
-      }
-      .jumbotron h1 {
-        font-size: 72px;
-        line-height: 1;
-      }
-      .jumbotron .btn {
-        font-size: 21px;
-        padding: 14px 24px;
-      }
+      		<hr> <!--horizontal line-->
 
-      /* Supporting marketing content */
-      .marketing {
-        margin: 60px 0;
-      }
-      .marketing p + h4 {
-        margin-top: 28px;
-      }
-    </style>
-<link href="{{ url_for('static', filename='css/bootstrap-responsive.css') }}" rel="stylesheet">
-  </head>
-  <body>
-  	<div class="container-narrow">
+      		<div class="jumbotron">
+        		<h1>Qmon</h1>
+        		<p class="lead">A free app to help you keep track of common expenses </p>
+        		<a class="btn btn-large btn-success" href="#">Sign up today</a>
+      		</div> <!-- class jumbotron -->
 
-      <div class="masthead">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-        <h3 class="muted">Qbite</h3>
-      </div>
+      		<hr>  <!--horizontal line-->
 
-      <hr>
+			<table class="table table-striped" id="account-table">
+				<thead>
+	    			<tr>
+	        			<th>#</th>
+	        			<th>Who</th>
+	        			<th>Date</th>
+	        			<th>Description</th>
+	        			<th>Spent</th>
+	        			<th>Credit</th>
+	        			<th>Balance</th>
+	    			</tr>
+				</thead>
+				
+				<tbody>
+	   				<tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
+		            	<td>1</td>
+		            	<td class="mutted">Thomas</td>
+		            	<td>05 May 2013</td>
+		            	<td>Groceries</td>
+		            	<td class="text-success">$150.00</td>
+		            	<td class="text-error"></td>
+		            	<td class="text-success">$150.00</td>
+		        	</tr>
+		        	<tr>
+		            	<td colspan="7" class="hiddenRow">
+							<div class="accordian-body collapse" id="demo1"> HOLAL </div>    
+						</td>
+		        	</tr>
+			</table>
 
-      <div class="jumbotron">
-        <h1>Hola Lindo!</h1>
-        <p class="lead">This is the beginning of a new awesome app</p>
-        <a class="btn btn-large btn-success" href="#">Sign up today</a>
-      </div>
+			Enter python to execute:
+			<form action="/" method="post">
+				<input type="text" name="expression" />
+				<input type="submit" value="Execute"/>
+			</form>
+			
+			{% with messages = get_flashed_messages() %}
+				{% if messages %}
+					results:
+						<pre>
+							{% for message in messages %}
+{{message}}
+							{% endfor %}
+						</pre>
+				{% endif %}
+			{% endwith %}
 
-      <hr>
 
-      <div class="row-fluid marketing">
-        <div class="span6">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+      		<div class="footer">
+        		<p>&copy; Javiera Guedes</p>
+      		</div>
 
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+    	</div> <!-- /container -->
 
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-        </div>
-
-     
-      </div>
-
-      <hr>
-
-      <div class="footer">
-        <p>&copy; Company 2013</p>
-      </div>
-
-    </div> <!-- /container -->
+  	<!-- Le javascript - Placed at the end of the document so the pages load faster -->
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-transition.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-alert.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-modal.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-dropdown.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-scrollspy.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-tab.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-tooltip.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-popover.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-button.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-collapse.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-carousel.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-typeahead.js') }}"></script>
   </body>
 </html>
